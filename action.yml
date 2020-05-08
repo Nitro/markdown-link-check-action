@@ -1,0 +1,28 @@
+name: Markdown Link Check
+description: Check for broken links at markdown files
+inputs:
+  version:
+    description: Version of the markdown-link-check
+    required: false
+    default: v0.1.0
+
+  config:
+    description: Path to the configuration file
+    required: false
+    default: markdown-link-check.yml
+
+  path:
+    description: Path to the folder containing the markdown files
+    required: false
+    default: .
+
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - --version
+    - ${{ inputs.version }}
+    - --config
+    - ${{ inputs.config }}
+    - --path
+    - ${{ inputs.path }}
