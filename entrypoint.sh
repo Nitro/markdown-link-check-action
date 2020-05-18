@@ -15,16 +15,16 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 # Download the release.
-curl --silent --show-error -L -o markdown-link-check.tar.gz https://github.com/Nitro/markdown-link-check/releases/download/${version}/markdown-link-check_${version}_linux_amd64.tar.gz
+curl --silent --show-error -L -o markdown-link-check.tar.gz "https://github.com/Nitro/markdown-link-check/releases/download/${version}/markdown-link-check_${version}_linux_amd64.tar.gz"
 
 # Uncompress.
 tar xf markdown-link-check.tar.gz
 
 # Move the binary to '/usr/bin'.
-mv markdown-link-check_${version}_linux_amd64/markdown-link-check /usr/bin/
+mv "markdown-link-check_${version}_linux_amd64/markdown-link-check" /usr/bin/
 
 # Remove the temporary files.
 rm -Rf markdown-link-check*
 
 # Excute the command.
-markdown-link-check --config $config $path
+markdown-link-check --config "$config" "$path"
